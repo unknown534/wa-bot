@@ -1,96 +1,89 @@
 # 🤖 WhatsApp Bot - Baileys Simple Bot
 
-Bot WhatsApp sederhana berbasis Node.js yang menggunakan library [`@whiskeysockets/baileys`](https://github.com/WhiskeySockets/Baileys) untuk merespon pesan secara otomatis dan dapat membuat stiker dari gambar yang dikirim dengan caption `!sticker`.
+Bot WhatsApp sederhana berbasis Node.js menggunakan [`@whiskeysockets/baileys`](https://github.com/WhiskeySockets/Baileys). Bot ini mampu merespons pesan otomatis dan mengubah gambar menjadi stiker dengan caption `!sticker`.
 
 ---
 
 ## ✨ Fitur
 
 - Auto-reply untuk beberapa perintah:
-  - `!info` — menampilkan info bot dan VPS
-  - `!sticker` — ubah gambar menjadi stiker
-  - `p`, `assalamu alaikum`, dll — pesan sapaan
-- Bisa di-host di VPS dan berjalan 24/7 dengan `pm2`
-- QR code ditampilkan langsung di terminal saat pertama kali dijalankan
-- Dukungan mention `@username` dalam balasan
-- Format teks multi-line (`\n`)
+  - `!info` — info bot & VPS
+  - `!sticker` — gambar jadi stiker
+  - `p`, `assalamu alaikum`, dll — balasan sapaan
+- Mention otomatis `@user`
+- Dukungan stiker dengan `wa-sticker-formatter`
+- Jalan 24/7 di VPS dengan `pm2`
 
 ---
 
 ## ⚙️ Cara Kerja
 
-Bot menggunakan Web WhatsApp API (melalui Baileys) untuk login sebagai **perangkat tertaut**. Saat pengguna mengirim pesan, bot akan:
-1. Menerima event `messages.upsert`
-2. Mengecek apakah pesan cocok dengan perintah tertentu
-3. Menjalankan aksi sesuai perintah (balas teks / konversi gambar ke stiker)
-4. Mengirimkan balasan ke pengirim
+Bot bekerja dengan koneksi sebagai perangkat tertaut (seperti WhatsApp Web) dan memantau pesan yang masuk. Jika ada pesan cocok dengan perintah, maka bot akan merespons dengan teks atau stiker.
 
-Bot menyimpan sesi login di folder `./session`, jadi tidak perlu scan QR berulang kali selama file session tidak dihapus.
+Session disimpan di folder `./session`, jadi selama file-nya tidak dihapus, kamu tidak perlu scan QR ulang.
 
 ---
 
-## 🧰 Alat dan Dependensi
+## 🧰 Alat & Dependensi
 
-Untuk menjalankan bot ini, kamu membutuhkan:
+### Diperlukan:
+- Node.js v18 atau lebih baru
+- npm (sudah termasuk dengan Node.js)
+- Git
+- PM2 (opsional, untuk jalan terus di VPS)
+- WhatsApp aktif (untuk scan QR)
 
-- ✅ Node.js versi **v18+** (direkomendasikan v20.x)
-- ✅ npm (biasanya sudah terpasang dengan Node.js)
-- ✅ Git (untuk clone & push repo)
-- ✅ [pm2](https://pm2.keymetrics.io/) (opsional, agar bot tetap hidup 24/7)
-- ✅ Akun WhatsApp aktif (untuk scan QR dari bot)
-- VPS / server lokal / Termux
+### Dependensi NPM:
 
----
+npm install @whiskeysockets/baileys@^6.7.4 
+qrcode-terminal 
+wa-sticker-formatter
 
-## 📦 Cara Instalasi & Menjalankan
-
-### 1. Clone repository
+Jika kamu ingin install sekaligus:
 ```bash
+npm install
+```
+dan pastikan file package.json sudah memuat dependensi berikut:
+```
+"dependencies": {
+  "@whiskeysockets/baileys": "^6.7.4",
+  "qrcode-terminal": "^0.12.0",
+  "wa-sticker-formatter": "^4.4.4"
+}
+
+```
+---
+
+# 🚀 Cara Menjalankan
+
+1. Clone Repository
+```
 git clone https://github.com/unknown534/wa-bot.git
 cd wa-bot
-
-2. Install dependencies
-
+```
+2. Install Semua Dependensi
+```   
 npm install
-
-3. Jalankan bot
-
+```
+4. Jalankan Bot
+```
 node index.js
+```
+QR akan muncul, scan dari WhatsApp kamu:
+WhatsApp → Menu (⋮) → Perangkat Tertaut → Tautkan Perangkat.
 
-Scan QR yang muncul di terminal menggunakan WhatsApp dari HP kamu (Menu > Perangkat tertaut).
-
-4. (Opsional) Jalankan 24/7 dengan PM2
-
+4. (Opsional) Jalankan Permanen dengan PM2
+```
 npm install -g pm2
 pm2 start index.js --name wa-bot
 pm2 save
 pm2 startup
 
-
+```
 ---
-
-🛡️ Keamanan
-
-File session/ jangan pernah di-push ke GitHub (sudah diatur di .gitignore)
-
-Bot tidak membaca isi chat secara massal, hanya merespon pesan yang dikirim ke bot
-
-Semua media disimpan sementara di memori, tidak disimpan di disk
-
-
-
 ---
 
 🧑‍💻 Author
 
-Made with ❤️ by @unknown534
+Made by @unknown534
 License: MIT
-
-
----
-
-❗ Catatan
-
-Jangan gunakan bot untuk spam atau aktivitas yang melanggar ketentuan WhatsApp
-
-WhatsApp bisa update sistem sewaktu-waktu — jika bot tidak berfungsi, cek versi Baileys terbaru
