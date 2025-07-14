@@ -34,11 +34,11 @@ Session disimpan di folder `./session`, jadi selama file-nya tidak dihapus, kamu
 - WhatsApp aktif (untuk scan QR)
 
 ### Dependensi NPM:
-
+```
 npm install @whiskeysockets/baileys@^6.7.4 
 qrcode-terminal 
 wa-sticker-formatter
-
+```
 Jika kamu ingin install sekaligus:
 ```bash
 npm install
