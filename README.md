@@ -6,11 +6,9 @@ Bot WhatsApp sederhana berbasis Node.js menggunakan [`@whiskeysockets/baileys`](
 
 ## ✨ Fitur
 
-- Auto-reply untuk beberapa perintah:
+- Auto-reply untuk beberapa perintah (bisa di edit di index.js):
   - `!info` — info bot & VPS
   - `!sticker` — gambar jadi stiker
-  - `p`, `assalamu alaikum`, dll — balasan sapaan
-- Mention otomatis `@user`
 - Dukungan stiker dengan `wa-sticker-formatter`
 - Jalan 24/7 di VPS dengan `pm2`
 
