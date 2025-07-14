@@ -1,4 +1,4 @@
-# 🤖 WhatsApp Bot - Baileys Simple Bot
+# 🤖 WhatsApp Bot - Sticker Bot
 
 Bot WhatsApp sederhana berbasis Node.js menggunakan [`@whiskeysockets/baileys`](https://github.com/WhiskeySockets/Baileys). Bot ini mampu merespons pesan otomatis dan mengubah gambar menjadi stiker dengan caption `!sticker`.
 
