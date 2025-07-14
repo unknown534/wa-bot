@@ -48,7 +48,6 @@ dan pastikan file package.json sudah memuat dependensi berikut:
   "qrcode-terminal": "^0.12.0",
   "wa-sticker-formatter": "^4.4.4"
 }
-
 ```
 ---
 
@@ -76,7 +75,6 @@ npm install -g pm2
 pm2 start index.js --name wa-bot
 pm2 save
 pm2 startup
-
 ```
 ---
 ---
